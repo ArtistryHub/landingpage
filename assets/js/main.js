@@ -39,9 +39,11 @@
 
 					// Images (in the format of 'url': 'alignment').
 						images: {
-							'assets/images/bg01.jpg': 'center',
-							'assets/images/bg02.jpg': 'center',
-							'assets/images/bg03.jpg': 'center'
+							'assets/images/bg04.jpg': 'center',
+							'assets/images/bg05.jpg': 'center',
+							'assets/images/bg06.jpg': 'center',
+							'assets/images/bg07.jpg': 'center',
+							'assets/images/bg08.jpg': 'center'
 						},
 
 					// Delay.
@@ -108,18 +110,23 @@
 		(function() {
 
 			// Vars.
-				var $form = document.querySelectorAll('#signup-form')[0],
-					$submit = document.querySelectorAll('#signup-form input[type="submit"]')[0],
+				var $form_artist = document.querySelectorAll('#signup-form-artist')[0],
+					$form_organizer = document.querySelectorAll('#signup-form-organizer')[0],
+					$submit_artist = document.querySelectorAll('#signup-form-artist input[type="submit"]')[0],
+					$submit_organizer = document.querySelectorAll('#signup-form-organizer input[type="submit"]')[0],
 					$message;
 
 			// Bail if addEventListener isn't supported.
-				if (!('addEventListener' in $form))
+				if (!('addEventListener' in $form_artist))
+					return;
+				if (!('addEventListener' in $form_organizer))
 					return;
 
 			// Message.
 				$message = document.createElement('span');
 					$message.classList.add('message');
-					$form.appendChild($message);
+					$form_artist.appendChild($message);
+					$form_organizer.appendChild($message);
 
 				$message._show = function(type, text) {
 
@@ -139,7 +146,7 @@
 
 			// Events.
 			// Note: If you're *not* using AJAX, get rid of this event listener.
-				$form.addEventListener('submit', function(event) {
+				$form_organizer.addEventListener('submit', function(event) {
 
 					event.stopPropagation();
 					event.preventDefault();
@@ -148,7 +155,7 @@
 						$message._hide();
 
 					// Disable submit.
-						$submit.disabled = true;
+						$submit_organizer.disabled = true;
 
 					// Process form.
 					// Note: Doesn't actually do anything yet (other than report back with a "thank you"),
@@ -156,10 +163,10 @@
 						window.setTimeout(function() {
 
 							// Reset form.
-								$form.reset();
+								$form_organizer.reset();
 
 							// Enable submit.
-								$submit.disabled = false;
+								$submit_organizer.disabled = false;
 
 							// Show message.
 								$message._show('success', 'Thank you!');
@@ -167,8 +174,38 @@
 
 						}, 750);
 
-				});
+				}
+				);
+				$form_artist.addEventListener('submit', function(event) {
 
+					event.stopPropagation();
+					event.preventDefault();
+
+					// Hide message.
+						$message._hide();
+
+					// Disable submit.
+						$submit_artist.disabled = true;
+
+					// Process form.
+					// Note: Doesn't actually do anything yet (other than report back with a "thank you"),
+					// but there's enough here to piece together a working AJAX submission call that does.
+						window.setTimeout(function() {
+
+							// Reset form.
+								$form_artist.reset();
+
+							// Enable submit.
+								$submit_artist.disabled = false;
+
+							// Show message.
+								$message._show('success', 'Thank you!');
+								//$message._show('failure', 'Something went wrong. Please try again.');
+
+						}, 750);
+
+				}
+				);
 		})();
 
 })();
