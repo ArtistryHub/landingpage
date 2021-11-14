@@ -1,9 +1,11 @@
+url: http://artistryhub.github.io/
+baseurl: /landingpage
+
 # Site settings
-title: Eventually
-email: youremailaddress@gmail.com
-description: A simple template for telling the world when you'll launch your next big thing. Brought to you by HTML5 UP.
-baseurl: "/eventually-jekyll-theme" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site
+title: Artistry Hub
+email: artistryhub0@gmail.com
+description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+
 
 # Social settings
 500px_url:
